@@ -1,6 +1,36 @@
 {% extends 'base.html' %}
-
+{% block title %}HTMX Todo App{% endblock %}
+{% block extra_css %}
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+          rel="stylesheet">
+    <!-- Include Flowbite CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"
+          rel="stylesheet" />
+{% endblock %}
 {% block content %}
-    <h1>Home</h1>
-    <p> Welcome to the home page!</p>
+    <div class="flex justify-center mt-10">
+        <div class="w-full max-w-xs">
+            <h1 class="text-4xl text-center mb-4">HTMX Todo App</h1>
+            <!-- Todo List Form -->
+            <form hx-post="/add-todo" hx-target="#todo-list" hx-swap="outerHTML">
+                <div class="mb-4">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                           type="text"
+                           placeholder="Add new todo"
+                           name="todo">
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit">Add</button>
+            </form>
+            <!-- Todo List -->
+            <div id="todo-list">
+                <!-- Dynamic content loaded with HTMX -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_scripts %}
+    <!-- Include Flowbite JS for additional components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 {% endblock %}
