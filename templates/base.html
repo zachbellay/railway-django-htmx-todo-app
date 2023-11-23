@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
-    {% block extra_head %}{% endblock %}
-
-    <!-- Include HTMX -->
-    <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
-
-    <!-- Additional CSS or JS files -->
-    {% block extra_css %}{% endblock %}
-    {% block extra_js %}{% endblock %}
-
-</head>
-
-<body>
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-
-    <nav>
-        {% block navigation %}{% endblock %}
-    </nav>
-
-    <main role="main">
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        {% block footer %}{% endblock %}
-    </footer>
-
-    {% block extra_scripts %}{% endblock %}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+        {% block extra_head %}{% endblock %}
+        <!-- Include HTMX -->
+        <script src="https://unpkg.com/htmx.org@1.9.9"
+                integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+                crossorigin="anonymous"></script>
+        <!-- Additional CSS or JS files -->
+        {% block extra_css %}{% endblock %}
+        {% block extra_js %}{% endblock %}
+    </head>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        <nav>
+            {% block navigation %}{% endblock %}
+        </nav>
+        <main role="main">
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            {% block footer %}{% endblock %}
+        </footer>
+        {% block extra_scripts %}{% endblock %}
+    </body>
 </html>
