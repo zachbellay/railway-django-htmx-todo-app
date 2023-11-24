@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 from todo.models import Todo
@@ -18,6 +17,4 @@ def add_todo(request):
             completed=False,
         )
 
-        return HttpResponse(
-            f"<li id='todo-{todo.id}'><input type='checkbox' name='todo-{todo.id}'><span>{todo.description}</span></li>"
-        )
+        return render(request, "partials/todo.html", {"todo": todo})

@@ -28,7 +28,7 @@
             <!-- Todo List -->
             <ul id="todo-list">
                 {% for todo in todos %}
-                    <li class="flex justify-between items-center bg-gray-100 mb-2 p-2">{{ todo.description }}</li>
+                    {% include 'partials/todo.html' %}
                 {% endfor %}
             </div>
         </div>
