@@ -1,1 +1,16 @@
-<li class="flex justify-between items-center bg-gray-100 mb-2 p-2">{{ todo.description }}</li>
+<li class="flex justify-between items-center bg-gray-100 mb-2 p-2">
+    {{ todo.description }}
+    <!-- Delete Button -->
+    <button hx-delete="{% url 'delete-todo' pk=todo.pk %}"
+            hx-target="closest li"
+            hx-swap="outerHTML"
+            class="text-red-500 hover:text-red-700">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor"
+             class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+</li>

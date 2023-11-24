@@ -9,6 +9,7 @@ urlpatterns = [
 
 htmxpatterns = [
     path("htmx/add-todo/", views.add_todo, name="add-todo"),
+    path("htmx/delete-todo/<int:pk>/", views.delete_todo, name="delete-todo"),
 ]
 
 urlpatterns += htmxpatterns
