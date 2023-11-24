@@ -15,7 +15,7 @@
             <!-- Todo List Form -->
             <form hx-post="{% url 'add-todo' %}"
                   hx-target="#todo-list"
-                  hx-swap="outerHTML">
+                  hx-swap="afterend">
                 <div class="mb-4">
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                            type="text"
@@ -26,8 +26,10 @@
                         type="submit">Add</button>
             </form>
             <!-- Todo List -->
-            <div id="todo-list">
-                <!-- Dynamic content loaded with HTMX -->
+            <ul id="todo-list">
+                {% for todo in todos %}
+                    <li class="flex justify-between items-center bg-gray-100 mb-2 p-2">{{ todo.description }}</li>
+                {% endfor %}
             </div>
         </div>
     </div>
